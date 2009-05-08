@@ -4,9 +4,25 @@ Experimental ruby gem to abstract sparql queries
 
 == Example of use
 
+Getting the uri:
+
   entity = SemanticEntity.find(@uri)
-  puts entity.name
   puts entity.uri
+  
+Getting the an attribute:
+  
+  puts entity.name.first
+  
+Getting all attributes the same name:
+
+  puts entity.site.each do |site|
+    puts site
+  end
+  
+== To be added
+
+* Lazy entitie to find sub-entities
+* Register of prefix ontologies
   
 == Contributors
 

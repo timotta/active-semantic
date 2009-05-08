@@ -11,17 +11,26 @@ class SemanticEntity
   end
   
   def method_missing(method, *args)
-    @data.each do |key,value|
-      if key.split(':')[1] == method.to_s
-        return value if value.is_a? Array
-        return [value]
-      end
-    end
+    value = value_by_attribute_name(method.to_s)
+    return [] if value.nil?
+    return [value] unless value.is_a? Array
+    value
   end
 
   def self.find(uri)
     data = extract_describe SemanticConnector.describe(uri)
     return new( data )
+  end
+  
+  private
+  
+  def value_by_attribute_name(name)
+    @data.each do |key,value|
+      if key.split(':')[1] == name.to_s
+        return value
+      end
+    end
+    nil
   end
 
   def self.extract_describe( data )
