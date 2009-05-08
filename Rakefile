@@ -62,3 +62,4 @@ else
     t.rcov_opts << "--no-validator-links"
   end
 end
+
