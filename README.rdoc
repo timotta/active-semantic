@@ -11,4 +11,4 @@ Experimental ruby gem to abstract sparql queries
 == Contributors
 
 Tiago Albineli Motta
-http://programandosemcafeina.blogspot.com
+http://programandosemcafeina.blogspot.comn

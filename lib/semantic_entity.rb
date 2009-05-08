@@ -12,7 +12,10 @@ class SemanticEntity
   
   def method_missing(method, *args)
     @data.each do |key,value|
-      return value if key.split(':')[1] == method.to_s
+      if key.split(':')[1] == method.to_s
+        return value if value.is_a? Array
+        return [value]
+      end
     end
   end
 
