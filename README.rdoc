@@ -1,0 +1,14 @@
+= SemanticEntities
+
+Experimental ruby gem to abstract sparql queries
+
+== Example of use
+
+  entity = SemanticEntity.find(@uri)
+  puts entity.name
+  puts entity.uri
+  
+== Contributors
+
+Tiago Albineli Motta
+http://programandosemcafeina.blogspot.com
