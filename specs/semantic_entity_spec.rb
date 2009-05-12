@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), "spec_helper")
 
 describe SemanticEntity do
   
-  describe 'when finding an entity' do
+  describe 'when finding a TV Show with series.rdf' do
     before :each do
       @uri = 'http://www.semanticweb.org/ontologies/series/Lost'
     end
@@ -20,6 +20,9 @@ describe SemanticEntity do
     end
     it 'should be an empty array when asking for a property that doesnt exists' do
       SemanticEntity.find(@uri).jurubeba.should == []
+    end
+    it 'should have five seasons' do
+      SemanticEntity.find(@uri).season.size.should == 5
     end
   end
   

@@ -36,9 +36,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/ontologies/series/has_character -->
+    <!-- http://www.semanticweb.org/ontologies/series/season -->
 
-    <owl:ObjectProperty rdf:about="has_character"/>
+    <owl:ObjectProperty rdf:about="season"/>
     
 
 
@@ -84,6 +84,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/ontologies/series/Season -->
+
+    <owl:Class rdf:about="Season">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/ontologies/series/TV_Show -->
 
     <owl:Class rdf:about="TV_Show">
@@ -117,6 +125,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/ontologies/series/Fifth_season_of_Lost -->
+
+    <Season rdf:about="Fifth_season_of_Lost"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/series/First_Season_of_Lost -->
+
+    <Season rdf:about="First_Season_of_Lost"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/series/Fourth_Season_of_Lost -->
+
+    <Season rdf:about="Fourth_Season_of_Lost"/>
+    
+
+
     <!-- http://www.semanticweb.org/ontologies/series/Fringe -->
 
     <TV_Show rdf:about="Fringe">
@@ -141,8 +167,24 @@
             >http://www.lostbrasil.com/</site>
         <site
             >http://lostpedia.wikia.com/wiki/Main_Page</site>
-        <has_character rdf:resource="John_Locke"/>
+        <season rdf:resource="Fifth_season_of_Lost"/>
+        <season rdf:resource="First_Season_of_Lost"/>
+        <season rdf:resource="Fourth_Season_of_Lost"/>
+        <season rdf:resource="Second_Season_of_Lost"/>
+        <season rdf:resource="Third_Season_of_Lost"/>
     </TV_Show>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/series/Second_Season_of_Lost -->
+
+    <Season rdf:about="Second_Season_of_Lost"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/series/Third_Season_of_Lost -->
+
+    <Season rdf:about="Third_Season_of_Lost"/>
 </rdf:RDF>
 
 
