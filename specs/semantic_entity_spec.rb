@@ -26,8 +26,17 @@ describe SemanticEntity do
     end
     
     describe 'and getting one season' do
+      it 'should be an SemanticLazyEntity' do
+        SemanticEntity.find(@uri).season.first.class.should be_equal(SemanticLazyEntity)
+      end
       it 'should have an description' do
         SemanticEntity.find(@uri).season.first.description.first == 'Concentrated on the middle-section survivors and their fight for survival and rescue.'
+      end
+    end
+    
+    describe 'and getting other season' do
+      it 'should have an description' do
+        SemanticEntity.find(@uri).season[1].description.first == 'Focused on the Hatch.'
       end
     end
     

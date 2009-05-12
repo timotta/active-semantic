@@ -7,36 +7,78 @@ class SemanticEntity
   end
   
   def uri
-    return @data['rdf:about']
+    return attributes['about'].first
   end
   
   def method_missing(method, *args)
-    value = value_by_attribute_name(method.to_s)
-    return [] if value.nil?
-    return [value] unless value.is_a? Array
-    value
+    attribute_by_name(method.to_s)
   end
 
   def self.find(uri)
-    data = extract_describe SemanticConnector.describe(uri)
-    return new( data )
+    return new( find_data_by_uri(uri) )
   end
   
-  private
+  protected
   
-  def value_by_attribute_name(name)
+  def attribute_by_name(name)
+    value = attributes[ name.to_s ]
+    return [] if value.nil?
+    value
+  end
+  
+  def attributes
+    return @attributes unless @attributes.nil?
+    @attributes = {}
     @data.each do |key,value|
-      if key.split(':')[1] == name.to_s
-        return value
-      end
+      @attributes[ key.split(':')[1] ] = prepare_attribute_value( value )
     end
-    nil
+    @attributes
   end
-
+  
   def self.extract_describe( data )
     data['rdf:RDF'].each do |key, value|
       return value unless key.index('xmlns')==0
     end
+  end
+  
+  def self.find_data_by_uri(uri)
+    extract_describe SemanticConnector.describe(uri)
+  end
+  
+  private
+  
+  def prepare_attribute_value(value)
+    return [value] unless value.is_a? Array
+    if value.first.is_a?(Hash) and not value.first['rdf:resource'].nil?
+      value = value.collect do |resource|
+        SemanticLazyEntity.new( resource['rdf:resource'] )
+      end
+    end
+    value
+  end
+
+end
+
+class SemanticLazyEntity < SemanticEntity
+  
+  def initialize(uri)
+    @uri = uri
+  end
+  
+  def uri
+    @uri
+  end
+  
+  def method_missing(method, *args)
+    load_data
+    attribute_by_name(method.to_s)
+  end
+  
+  private 
+  
+  def load_data
+    return unless @data.nil?
+    @data = SemanticEntity.find_data_by_uri(@uri)
   end
 
 end

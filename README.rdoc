@@ -15,14 +15,27 @@ Getting the an attribute:
   
 Getting all attributes the same name:
 
-  puts entity.site.each do |site|
+  entity.site.each do |site|
     puts site
   end
   
+Getting attributes of related entities:
+
+  entity.season.each do |season|
+    puts season.description.first
+  end
+  
+== Features
+
+=== Lazy loading on related entities
+
+All data of a related entity are requested only when some its attribute is accessed. 
+  
 == To be added
 
-* Lazy entitie to find sub-entities
-* Register of prefix ontologies
+* Refactory of class organization, use ActiveSemantic as namespace
+* Register prefix ontologies
+* When iterate on a list of related entities, request on server all data of them
   
 == Contributors
 
