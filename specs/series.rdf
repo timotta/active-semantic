@@ -53,6 +53,12 @@
     
 
 
+    <!-- http://www.semanticweb.org/ontologies/series/description -->
+
+    <owl:DatatypeProperty rdf:about="description"/>
+    
+
+
     <!-- http://www.semanticweb.org/ontologies/series/name -->
 
     <owl:DatatypeProperty rdf:about="name"/>
@@ -133,13 +139,19 @@
 
     <!-- http://www.semanticweb.org/ontologies/series/First_Season_of_Lost -->
 
-    <Season rdf:about="First_Season_of_Lost"/>
+    <Season rdf:about="First_Season_of_Lost">
+        <description
+            >Concentrated on the middle-section survivors and their fight for survival and rescue.</description>
+    </Season>
     
 
 
     <!-- http://www.semanticweb.org/ontologies/series/Fourth_Season_of_Lost -->
 
-    <Season rdf:about="Fourth_Season_of_Lost"/>
+    <Season rdf:about="Fourth_Season_of_Lost">
+        <description
+            >Focused particularly on new characters introduced to the Island and the fates of certain survivors who would leave the Island.</description>
+    </Season>
     
 
 
@@ -178,13 +190,19 @@
 
     <!-- http://www.semanticweb.org/ontologies/series/Second_Season_of_Lost -->
 
-    <Season rdf:about="Second_Season_of_Lost"/>
+    <Season rdf:about="Second_Season_of_Lost">
+        <description
+            >Focused on the Hatch.</description>
+    </Season>
     
 
 
     <!-- http://www.semanticweb.org/ontologies/series/Third_Season_of_Lost -->
 
-    <Season rdf:about="Third_Season_of_Lost"/>
+    <Season rdf:about="Third_Season_of_Lost">
+        <description
+            >Focused on the Others.</description>
+    </Season>
 </rdf:RDF>
 
 

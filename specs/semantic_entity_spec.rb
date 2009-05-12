@@ -24,6 +24,15 @@ describe SemanticEntity do
     it 'should have five seasons' do
       SemanticEntity.find(@uri).season.size.should == 5
     end
+    
+    describe 'and getting one season' do
+      it 'should have an description' do
+        SemanticEntity.find(@uri).season.first.description.first == 'Concentrated on the middle-section survivors and their fight for survival and rescue.'
+      end
+    end
+    
   end
+  
+  
   
 end
