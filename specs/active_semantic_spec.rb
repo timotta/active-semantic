@@ -1,42 +1,42 @@
 require File.join(File.dirname(__FILE__), "spec_helper")
 
-describe SemanticEntity do
+describe ActiveSemantic do
   
   describe 'when finding a TV Show with series.rdf' do
     before :each do
       @uri = 'http://www.semanticweb.org/ontologies/series/Lost'
     end
     it 'should returns an SemanticEntity' do
-      SemanticEntity.find(@uri).class.should be_equal(SemanticEntity)
+      ActiveSemantic.find(@uri).class.should be_equal(ActiveSemantic::Entity)
     end
     it 'should have the uri' do
-      SemanticEntity.find(@uri).uri.should == @uri
+      ActiveSemantic.find(@uri).uri.should == @uri
     end
     it 'should have a name' do
-      SemanticEntity.find(@uri).name.first.should == 'Lost'
+      ActiveSemantic.find(@uri).name.first.should == 'Lost'
     end
     it 'should have a adress' do
-      SemanticEntity.find(@uri).site.should == ["http://lostpedia.wikia.com/wiki/Main_Page", "http://www.lostbrasil.com/"]
+      ActiveSemantic.find(@uri).site.should == ["http://lostpedia.wikia.com/wiki/Main_Page", "http://www.lostbrasil.com/"]
     end
     it 'should be an empty array when asking for a property that doesnt exists' do
-      SemanticEntity.find(@uri).jurubeba.should == []
+      ActiveSemantic.find(@uri).jurubeba.should == []
     end
     it 'should have five seasons' do
-      SemanticEntity.find(@uri).season.size.should == 5
+      ActiveSemantic.find(@uri).season.size.should == 5
     end
     
     describe 'and getting one season' do
       it 'should be an SemanticLazyEntity' do
-        SemanticEntity.find(@uri).season.first.class.should be_equal(SemanticLazyEntity)
+        ActiveSemantic.find(@uri).season.first.class.should be_equal(ActiveSemantic::LazyEntity)
       end
       it 'should have an description' do
-        SemanticEntity.find(@uri).season.first.description.first == 'Concentrated on the middle-section survivors and their fight for survival and rescue.'
+        ActiveSemantic.find(@uri).season.first.description.first == 'Concentrated on the middle-section survivors and their fight for survival and rescue.'
       end
     end
     
     describe 'and getting other season' do
       it 'should have an description' do
-        SemanticEntity.find(@uri).season[1].description.first == 'Focused on the Hatch.'
+        ActiveSemantic.find(@uri).season[1].description.first == 'Focused on the Hatch.'
       end
     end
     

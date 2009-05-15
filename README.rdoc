@@ -6,22 +6,22 @@ Experimental ruby gem to abstract sparql queries
 
 Getting the uri:
 
-  entity = SemanticEntity.find(@uri)
-  puts entity.uri
+  tv_show = ActiveSemantic.find(@uri)
+  puts tv_show.uri
   
 Getting the an attribute:
   
-  puts entity.name.first
+  puts tv_show.name.first
   
 Getting all attributes the same name:
 
-  entity.site.each do |site|
+  tv_show.site.each do |site|
     puts site
   end
   
 Getting attributes of related entities:
 
-  entity.season.each do |season|
+  tv_show.season.each do |season|
     puts season.description.first
   end
   
@@ -31,11 +31,12 @@ Getting attributes of related entities:
 
 All data of a related entity are requested only when some its attribute is accessed. 
   
-== To be added
+== TODO
 
-* Refactory of class organization, use ActiveSemantic as namespace
 * Register prefix ontologies
 * When iterate on a list of related entities, request on server all data of them
+* Prepare to use rake spec
+* Access entities where the actual entity is some attribute
   
 == Contributors
 
